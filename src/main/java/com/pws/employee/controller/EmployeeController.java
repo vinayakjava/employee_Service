@@ -65,10 +65,10 @@ public class EmployeeController {
 	@Operation(summary = "SignUp")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "SignUp Successfull",
-					content = { @Content(mediaType = "application/json"
+					content = { @Content(mediaType = "application/json",examples = {@ExampleObject(value = SwaggerLogsConstants.SIGNUP_201_SUCCESS)}
 					) }),
 			@ApiResponse(responseCode = "400", description = "Bad Request",
-					content = @Content),
+					content ={ @Content(mediaType = "application/json",examples = {@ExampleObject(value = SwaggerLogsConstants.SIGNUP_400_FAILURE)})}),
 			@ApiResponse(responseCode = "404", description = "Invalid Credentials",
 					content = @Content) })
     @PostMapping("public/user/signup")
