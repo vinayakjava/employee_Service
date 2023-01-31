@@ -1,8 +1,13 @@
 package com.pws.employee.controller;
 
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.pws.employee.utility.SwaggerLogsConstants;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -123,7 +128,28 @@ public class EmployeeController {
         UserBasicDetailsDTO userBasicDetailsDTO = employeeService.getUserBasicInfoAfterLoginSuccess(email);
         return CommonUtils.buildResponseEntity(new ApiSuccess(HttpStatus.OK, userBasicDetailsDTO));
     }
+	
+	@Operation(summary = "refresh token when old token expired")
+	@ApiResponses(value = { 
+	  @ApiResponse(responseCode = "200", description = "refresh token Generated", 
+			  content = { @Content(mediaType = "application/json") }),
+	  @ApiResponse(responseCode = "400", description = "please enter a valid expired token", 
+			  content = { @Content(mediaType = "application/json") }), 
+	  @ApiResponse(responseCode = "404", description = "token not Generated", 
+	  content = { @Content(mediaType = "application/json") }) })
 
+	@GetMapping("private/token/refresh")
+	public String refreshToken(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String authorizationHeader = request.getHeader(AUTHORIZATION);
+		String token = authorizationHeader.substring(7);
+		Boolean isexp = jwtUtil.isTokenExpired(token);
+		if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ") && isexp != false) {
+			return jwtUtil.refreshToken(token);
+		} else {
+			throw new PWSException("enter a expired valid token");
+		}
+
+	}
 
 
 	@Operation(summary = "Fetch All Skill")
