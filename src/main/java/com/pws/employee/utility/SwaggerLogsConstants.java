@@ -7,4 +7,18 @@ public final class SwaggerLogsConstants {
             + "  \"status\": 400,\r\n" + "  \"error\": \"BAD_REQUEST\",\r\n"
             + "  \"message\": \"inavalid username/password\",\r\n" + "  \"debugMessage\": null,\r\n"
             + "  \"subErrors\": null\r\n" + "}";
+    public static final String SIGNUP_201_SUCCESS="{\n" +
+            "  \"timestamp\": \"26-01-2023 07:10:06\",\n" +
+            "  \"status\": \"CREATED\",\n" +
+            "  \"data\": null\n" +
+            "}";
+
+    public static final String SIGNUP_400_FAILURE="{\n" +
+            "  \"timestamp\": \"26-01-2023 07:11:04\",\n" +
+            "  \"status\": 400,\n" +
+            "  \"error\": \"BAD_REQUEST\",\n" +
+            "  \"message\": \"User Already Exist with Email : ram123@gmail.com\",\n" +
+            "  \"debugMessage\": null,\n" +
+            "  \"subErrors\": null\n" +
+            "}";
 }
