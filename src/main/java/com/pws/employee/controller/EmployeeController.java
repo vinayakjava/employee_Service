@@ -101,10 +101,11 @@ public class EmployeeController {
 	@Operation(summary = "Update user password")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Password Updated Successfully",
-					content = { @Content(mediaType = "application/json"
+					content = { @Content(mediaType = "application/json",examples = {@ExampleObject(value = SwaggerLogsConstants.UPDATE_USER_PASSWORD_200_SUCCESS)}
 					) }),
 			@ApiResponse(responseCode = "400", description = "Invalid UserName/Password supplied",
-					content = @Content),
+					content = { @Content(mediaType = "application/json",examples = {@ExampleObject(value = SwaggerLogsConstants.UPDATE_USER_PASSWORD_400_FAILURE)}
+					) }),
 			@ApiResponse(responseCode = "404", description = "User not found",
 					content = @Content) })
 	@PutMapping("private/update/user/password")

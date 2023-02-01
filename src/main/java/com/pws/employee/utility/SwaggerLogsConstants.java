@@ -21,4 +21,17 @@ public final class SwaggerLogsConstants {
             "  \"debugMessage\": null,\n" +
             "  \"subErrors\": null\n" +
             "}";
+    public static final String UPDATE_USER_PASSWORD_200_SUCCESS="{\n" +
+            "  \"timestamp\": \"26-01-2023 07:20:16\",\n" +
+            "  \"status\": \"OK\",\n" +
+            "  \"data\": null\n" +
+            "}";
+    public static final String UPDATE_USER_PASSWORD_400_FAILURE="{\n" +
+            "  \"timestamp\": \"26-01-2023 07:16:44\",\n" +
+            "  \"status\": 400,\n" +
+            "  \"error\": \"BAD_REQUEST\",\n" +
+            "  \"message\": \"new password and confirm password doesnot match \",\n" +
+            "  \"debugMessage\": null,\n" +
+            "  \"subErrors\": null\n" +
+            "}";
 }
